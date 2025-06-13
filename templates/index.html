@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Docify</title>
+    <style>
+        #url-form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+        #url{
+            width: 450px;
+            font-size: larger;
+        }
+
+        #url-form label{
+            font-size:larger;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin:50px; margin-bottom: 85px;">THIS IS A DOCUMENTATION WEBSITE FOR GITHUB REPO'S.</h1>
+    <form action="/create" method="post" id="url-form">
+        <label for="url">Github URL(http):</label>
+        <input type="text" id="url" name="url">
+    
+        <input type="submit" value="Create" style="font-size: larger;" id="submit">
+    </form>
+    <script src="/static/index.js" defer></script>
+</body>
+</html>
