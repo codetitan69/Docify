@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,jsonify
+from flask import Flask,render_template,request,abort
 from http import HTTPStatus
 
 from helpers import clone
@@ -17,7 +17,7 @@ def create():
 
     except Exception as e:
         print(e)
-        return jsonify({"error":"something went wrong"},HTTPStatus.INTERNAL_SERVER_ERROR)
+        abort(HTTPStatus.INTERNAL_SERVER_ERROR)
 
     return f"{dir} created."
 
