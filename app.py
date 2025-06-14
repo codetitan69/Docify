@@ -1,4 +1,7 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,jsonify
+from http import HTTPStatus
+
+from helpers import clone
 
 app = Flask(__name__,template_folder="templates",static_folder="static")
 
@@ -9,7 +12,14 @@ def home():
 @app.route("/create",methods=["POST"])
 def create():
     url = request.form.get("url")
-    return url
+    try:
+        dir = clone(url=url)
+
+    except Exception as e:
+        print(e)
+        return jsonify({"error":"something went wrong"},HTTPStatus.INTERNAL_SERVER_ERROR)
+
+    return f"{dir} created."
 
 if __name__ == "__main__":
     app.run(port=9900,debug=True)
