@@ -16,19 +16,16 @@ def custom_request(text,key):
         },
 
         data=json.dumps({
-            "model": "google/gemini-2.0-flash-exp:free",
+            "model": "deepseek/deepseek-r1:free",
             "messages": [
             {
                 "role": "user",
-                "content": [
-                {
-                    "type": "text",
-                    "text": f"{text}"
-                },
-                ]
+                "content": f"{text}"
             }
             ],
         })
     )
 
-response = custom_request("hi")
+def Get_Content(response):
+    response_json = json.loads(response.content.decode("utf-8"))
+    return response_json["choices"][0]["message"]["content"]

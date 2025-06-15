@@ -51,4 +51,3 @@ def Create_Query(path):
 
     return query
 
-print(Create_Query("./Docify/"))
